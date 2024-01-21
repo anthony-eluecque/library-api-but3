@@ -18,6 +18,6 @@ Nommage
 
 ## Raccourcis utiles 
 
-- Renommer élément et ses références : (Hold) CTRL + R + R
-- Créer propriété : (Write) prop + Tab 
-- Créer constructeur: (Write) ctor + Tab
+- Renommer un élément et ses références : (Hold) CTRL + R + R
+- Créer iune propriété : (Write) prop + Tab 
+- Créer un constructeur: (Write) ctor + Tab
