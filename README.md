@@ -1,4 +1,4 @@
-# # Donde esta la biblioteca
+# Donde esta la biblioteca
 
 ## Sujet 
 
@@ -28,9 +28,10 @@ Et mettre en place son architecture de projets (ClassLibrary) :
 - Services
 - BusinessObjects
 - DataAccessLayer
+
 PS : Votre projet créer avec la solution fait office de StartUp
 
-Créer une méthode Main dans le Program.cs avec les recommandations VS.
+Créer une méthode Main dans le `Program.cs` grâce aux recommandations VS.
 
 
 ### Ressources
@@ -40,14 +41,14 @@ Créer une méthode Main dans le Program.cs avec les recommandations VS.
 
 ### Raccourcis utiles 
 
-- Recommandation VS : Alt + Entrée
-- Renommer un élément et ses références : (Hold) CTRL + R + R
-- Créer une propriété : (Write) prop + Tab 
-- Créer un constructeur: (Write) ctor + Tab
-- Redirection sur la classe concernée : F12
-- Redirection sur la classe concrète concernée : Ctrl + F12
-- Afficher le contenu de l'élément dans un encart : Alt + F12 d'une référence 
-- Lancer en Debug : F5
-- Faire continuer le programme : F5
-- Instruction suivante : F10
-- Instruction suivante dans la méthode : F11
+- Recommandation VS : `Alt + Entrée`
+- Renommer un élément et ses références : `(Hold) CTRL + R + R`
+- Créer une propriété : `(Write) prop + Tab`
+- Créer un constructeur: `(Write) ctor + Tab`
+- Redirection sur la classe concernée : `F12`
+- Redirection sur la classe concrète concernée : `Ctrl + F12`
+- Afficher le contenu de l'élément dans un encart : `Alt + F12`
+- Lancer en Debug : `F5`
+- Faire continuer le programme : `F5`
+- Instruction suivante : `F10`
+- Instruction suivante dans la méthode : `F11`
