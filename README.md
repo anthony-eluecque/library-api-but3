@@ -10,16 +10,17 @@ Le but du projet est de voir un maximum de choses que .NET peut vous apporter do
 
 ### Critère de qualité
 
-- Commit régulier, au moins à chaque étape
+- Commits réguliers, au moins à chaque étape
 - Indentation
-- En Anglais ou en Français mais garder la même logique tout du long
+- En Anglais
+- Privilégier les interfaces aux classes concrètes (normalement en suivant bien le projet ça devrait être facile)
 - Nommage :
   - "Singulier" pour un objet simple et "Pluriel" pour une liste 
-  - PascalCase : Pour les noms de classe et interface...
-  - camelCase : Pour les variables
-  - _camelCase : Pour les variables déclaré au niveau de la classe
-  - Nom d'interface commençant par un I
-  - Nom de classe abstraite par un A
+  - **PascalCase** : Pour les noms de classe et interface...
+  - **camelCase** : Pour les variables
+  - **_camelCase** : Pour les variables déclaré au niveau de la classe
+  - Nom d'interface commençant par un **I**
+  - Nom de classe abstraite par un **A**
 
 ## TODO
 
@@ -29,21 +30,26 @@ Créer une application console nommé LibraryManager. N'oubliez pas d'ajouter le
 Et mettre en place son architecture de projets (ClassLibrary) :
 - `BusinessLayer` : Couche métier; on va y mettre toute la logique métier
 - `Services` : Couche services intermédiaire; va permettre d'orchestrer les besoins et de relier d'autres couches entre elles
-- `BusinessObjects` : Couche contenant vos objets métier (objets de bdd, de travail)
+- `BusinessObjects` : Couche contenant vos objets métier (objets de bdd ou de travail)
 - `DataAccessLayer` : Couche permettant l'accès aux données; on y retrouvera notamment les repository
 
 PS : Votre projet créer avec la solution fait office de couche d'entrée à l'application et configuration
-
-~Ce qui est écrit n'est pas gravé dans le marbre ~
 
 Créer une méthode Main dans le `Program.cs` grâce aux recommandations VS.
 
 ### Etape 2 : Préparer son architecture
 
-1. Dans votre projet `BusinessObject`, créez un dossier `Entity`, puis dans ce dossier créez les objets correspondants aux tables du fichier `LibraryInit.sql`
-2. Dans votre projet `Services`, créez un dossier `Services`, puis dans ce dossier une classe `CatalogService`
-3. Dans votre projet `DataAccessLayer`, créez un dossier `Repository`, puis dans ce dossier une classe `BookRepository`
-4. WIP
+1. Dans votre projet `BusinessObjects`, créez un dossier `Entity`, puis dans ce dossier créez les objets correspondants aux tables du fichier `LibraryInit.sql`
+
+2. Dans votre projet `DataAccessLayer`, créez un dossier `Repository`, puis dans ce dossier une classe `BookRepository`
+
+Vous y créerez les méthodes `GetAll()` qui retournera un `IEnumerable<Book>` et `Get(int id)` qui retounera un `Book`
+Répétez le même schéma pour chacune de vos entités.
+
+3. Dans votre projet `BusinessLayer`, créez un dossier `Catalog`, puis dans ce dossier une classe `CatalogManager` qui contiendra les méthodes `ShowCatalog()` et `FindBook(int id)` qui utiliseront les Repository.
+
+4. Dans votre projet `Services`, créez un dossier `Services`, puis dans ce dossier une classe `CatalogService` qui contiendra les méthodes `ShowCatalog()` et `FindBook(int id)` qui utiliseront le `CatalogManger`
+
 
 ### Etape 3 : LINQ
 
@@ -55,11 +61,15 @@ Pour réaliser de l'injection de dépendance, créez une réplique de toutes vos
 
 Pour plus d'informations : [Injection de dépendance - Microsoft](https://learn.microsoft.com/fr-fr/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-8.0)
 
+
 ### Etape 5 : EntityFramework
 
 
+Pour plus d'informations : [EntityFramework - Microsoft](https://learn.microsoft.com/fr-fr/ef/core/)
 
-### Etape 6 :
+### Etape 6 : TU
+
+Créez un dossier `Tests` et puis un nouveau projet `Services.Test`.
 
 
 ### Ressources
