@@ -10,6 +10,7 @@ Le but du projet est de voir un maximum de choses que .NET peut vous apporter do
 
 ### Critère de qualité
 
+- Commit régulier, au moins à chaque étape
 - Indentation
 - En Anglais ou en Français mais garder la même logique tout du long
 - Nommage :
@@ -24,14 +25,20 @@ Le but du projet est de voir un maximum de choses que .NET peut vous apporter do
 
 Créer une application console nommé LibraryManager. N'oubliez pas d'ajouter le nuget : Microsoft.Extensions.Hosting
 Et mettre en place son architecture de projets (ClassLibrary) :
-- BusinessLayer
-- Services
-- BusinessObjects
-- DataAccessLayer
+- BusinessLayer : Couche métier; on va y mettre toute la logique métier
+- Services : Couche services intermédiaire; va permettre d'orchestrer les besoins et de relier d'autres couches entre elles
+- BusinessObjects : Couche contenant vos objets métier (objets de bdd, de travail)
+- DataAccessLayer : Couche permettant l'accès aux données; on y retrouvera notamment les repository
 
-PS : Votre projet créer avec la solution fait office de StartUp
+PS : Votre projet créer avec la solution fait office de couche d'entrée à l'application et configuration
+
+~Ce qui est écrit n'est pas gravé dans le marbre ~
 
 Créer une méthode Main dans le `Program.cs` grâce aux recommandations VS.
+
+### Etape 2 
+
+Un script SQL est présent sur ce repo. Utilisez les tables pour créer dans le projet `BusinessObject`, un dossier `Entity` contenant les classes de vos objets.
 
 
 ### Ressources
