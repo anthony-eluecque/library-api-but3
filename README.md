@@ -92,11 +92,6 @@ Pour plus d'informations : [TU avec C# - Microsoft](https://learn.microsoft.com/
 WIP
 
 
-### Ressources
-
-- StackOverflow
-- Doc Microsoft
-
 ### Raccourcis utiles 
 
 - Recommandation VS : `Alt + Entrée`
