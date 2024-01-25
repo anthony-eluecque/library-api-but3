@@ -41,6 +41,8 @@ Créer une méthode Main dans le `Program.cs` grâce aux recommandations VS.
 
 1. Dans votre projet `BusinessObjects`, créez un dossier `Entity`, puis dans ce dossier créez les objets correspondants aux tables du fichier `LibraryInit.sql`
 
+Pour les types de livres, pensez à créer un `enum`.
+
 2. Dans votre projet `DataAccessLayer`, créez un dossier `Repository`, puis dans ce dossier une classe `BookRepository`
 
 Vous y créerez les méthodes `GetAll()` qui retournera un `IEnumerable<Book>` et `Get(int id)` qui retounera un `Book`
