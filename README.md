@@ -53,24 +53,43 @@ Répétez le même schéma pour chacune de vos entités.
 
 ### Etape 3 : LINQ
 
-Dans les `BusinessLayer` et `Services`, ajoutez une méthode `ShowCatalog(string type)` pour ne remonter que les livres de type "Fantasy"
+En utilisant Linq :
+1. Dans les `BusinessLayer` et `Services`, ajoutez une méthode pour ne remonter que les livres de type "Fantasy"
+2. Dans les `BusinessLayer` et `Services`, ajoutez une méthode pour remonter le livre le mieux noté
+
 Pour plus d'informations : [LINQ - Microsoft](https://learn.microsoft.com/fr-fr/dotnet/csharp/linq/)
 
 ### Etape 4 : Injection de dépendance
 
 Pour réaliser de l'injection de dépendance, créez une réplique de toutes vos classes concrètes ayant de la logique et instanciés ailleurs dans votre code.
 
-Pour plus d'informations : [Injection de dépendance - Microsoft](https://learn.microsoft.com/fr-fr/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-8.0)
+Pour vos repository, on fera un peu différemment. Vous allez créer une seule interface `IGenericRepository` qui prendra en paramètre un type générique. 
 
+Pour plus d'informations : 
+- [Injection de dépendance - Microsoft](https://learn.microsoft.com/fr-fr/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-8.0)
+- [Classes et méthodes générique - Microsoft](https://learn.microsoft.com/fr-fr/dotnet/csharp/fundamentals/types/generics)
 
 ### Etape 5 : EntityFramework
+
+Avec l'aide de la base de données SQLite fournit en annexe, vous allez implémenter l'ORM EntityFramework.
 
 
 Pour plus d'informations : [EntityFramework - Microsoft](https://learn.microsoft.com/fr-fr/ef/core/)
 
+Pour consulter votre base de données, je vous conseille l'utilisation de [DBeaver](https://learn.microsoft.com/fr-fr/dotnet/csharp/fundamentals/types/generics)
+
 ### Etape 6 : TU
 
 Créez un dossier `Tests` et puis un nouveau projet `Services.Test`.
+Créez une classe `CatalogServiceTest`.
+
+Implémentez un test unitaire sur chaque méthode de votre `CatalogService` en pensant à Mock le retour de votre `CatalogManager`pour bien tester unitairement votre méthode.
+
+Pour plus d'informations : [TU avec C# - Microsoft](https://learn.microsoft.com/fr-fr/dotnet/core/testing/unit-testing-with-mstest)
+
+### Etape 7 : API
+
+WIP
 
 
 ### Ressources
