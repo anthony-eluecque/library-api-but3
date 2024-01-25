@@ -46,13 +46,14 @@ Créer une méthode Main dans le `Program.cs` grâce aux recommandations VS.
 Vous y créerez les méthodes `GetAll()` qui retournera un `IEnumerable<Book>` et `Get(int id)` qui retounera un `Book`
 Répétez le même schéma pour chacune de vos entités.
 
-3. Dans votre projet `BusinessLayer`, créez un dossier `Catalog`, puis dans ce dossier une classe `CatalogManager` qui contiendra les méthodes `ShowCatalog()` et `FindBook(int id)` qui utiliseront les Repository.
+3. Dans votre projet `BusinessLayer`, créez un dossier `Catalog`, puis dans ce dossier une classe `CatalogManager` qui contiendra les méthodes `DisplayCatalog()` et `FindBook(int id)` qui utiliseront les Repository.
 
 4. Dans votre projet `Services`, créez un dossier `Services`, puis dans ce dossier une classe `CatalogService` qui contiendra les méthodes `ShowCatalog()` et `FindBook(int id)` qui utiliseront le `CatalogManger`
 
 
 ### Etape 3 : LINQ
 
+Dans les `BusinessLayer` et `Services`, ajoutez une méthode `ShowCatalog(string type)` pour ne remonter que les livres de type "Fantasy"
 Pour plus d'informations : [LINQ - Microsoft](https://learn.microsoft.com/fr-fr/dotnet/csharp/linq/)
 
 ### Etape 4 : Injection de dépendance
