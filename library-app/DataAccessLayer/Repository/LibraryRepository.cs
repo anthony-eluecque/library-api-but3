@@ -4,16 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repository
 {
-    public class LibraryRepository : IRepository<Library>
+    public class LibraryRepository : ARepository<Library>
     {
-        public Task<Library> Get(int id)
+        public LibraryRepository(DataContext context) : base(context)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Library>> GetAll()
-        {
-            throw new NotImplementedException();
         }
     }
 }
