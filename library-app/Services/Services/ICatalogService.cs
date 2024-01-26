@@ -12,5 +12,7 @@ namespace Services.Services
         public void ShowCatalog();
 
         public Book FindBook(int id);
+
+        public List<Book> GetFantasyBooks();
     }
 }

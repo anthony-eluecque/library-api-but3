@@ -11,8 +11,11 @@ public class Program
         var configuration = new ConfigurationBuilder();
 
         var host = CreateHostBuilder(configuration).Build();
+        var catalogService = host.Services.GetRequiredService<ICatalogService>();
+        catalogService.ShowCatalog();
+        catalogService.FindBook(1);
+        catalogService.GetFantasyBooks();
         host.Run();
-
     }
 
     private static IHostBuilder CreateHostBuilder(IConfigurationBuilder configuration)

@@ -26,7 +26,6 @@ namespace BusinessObjects.Entity
 
         public int Rate { get; set; }
 
-
         // TODO : Entity Framework
         public int Id_author { get; set; }
 

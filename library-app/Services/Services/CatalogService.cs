@@ -21,5 +21,10 @@ namespace Services.Services
         {
             return _catalogManager.FindBook(id);
         }
+
+        public List<Book> GetFantasyBooks()
+        {
+            return _catalogManager.GetFantasyBooks();
+        }
     }
 }
