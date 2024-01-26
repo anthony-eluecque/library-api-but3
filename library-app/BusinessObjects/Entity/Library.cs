@@ -5,5 +5,8 @@
         public string Name { get; set; }
 
         public string Adress { get; set; }
+
+
+        public ICollection<Book> Books { get; set; }
     }
 }

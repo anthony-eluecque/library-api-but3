@@ -20,8 +20,9 @@
 
         public int Rate { get; set; }
 
-        //// TODO : Entity Framework
-        //public int Id_author { get; set; }
+        public int Id_Author { get; set; }
+        public Author Author { get; set; }
 
+        public ICollection<Library> Libraries { get; set; }
     }
 }
