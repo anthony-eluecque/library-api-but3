@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BusinessObjects.Entity
+﻿namespace BusinessObjects.Entity
 {
     public enum BookTypes
     {
@@ -26,8 +20,8 @@ namespace BusinessObjects.Entity
 
         public int Rate { get; set; }
 
-        // TODO : Entity Framework
-        public int Id_author { get; set; }
+        //// TODO : Entity Framework
+        //public int Id_author { get; set; }
 
     }
 }

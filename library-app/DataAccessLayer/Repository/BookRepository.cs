@@ -1,39 +1,33 @@
 ﻿using BusinessObjects.Entity;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+using DataAccessLayer.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repository
 {
     public class BookRepository : IRepository<Book>
     {
-        private List<Book> _books = new List<Book>();
+        private readonly DataContext _context;
 
-        public BookRepository()
+        public BookRepository(DataContext context)
         {
-            AddBook(new Book { Name = "Book 1", Pages = 200, Type = BookTypes.ENSEIGNEMENT, Rate = 4, Id_author = 1 , Id = 1});
-            AddBook(new Book { Name = "Book 2", Pages = 150, Type = BookTypes.HISTOIRE, Rate = 5, Id_author = 2 , Id = 2});
-            AddBook(new Book { Name = "Book 3", Pages = 200, Type = BookTypes.FANTASY, Rate = 4, Id_author = 1, Id = 1 });
-            AddBook(new Book { Name = "Book 4", Pages = 150, Type = BookTypes.FANTASY, Rate = 5, Id_author = 2, Id = 2 });
+            _context = context;
         }
 
-        public IEnumerable<Book> GetAll()
+        public async Task<List<Book>> GetAll()
         {
-            return _books;
+            try
+            {
+                Console.WriteLine(_context.Book);
+                return await _context.Book.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
 
-        public IEnumerable<Book> Get(int id)
-        {
-            return _books.Where(book => book.Id == id);
-        }
-
-
-        private void AddBook(Book book)
-        {
-            _books.Add(book);
-        }
-
+        public async Task<Book> Get(int id) => await _context.Book.FindAsync(id);
 
     }
 }

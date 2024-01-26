@@ -1,20 +1,22 @@
 ﻿using BusinessObjects.Entity;
+using DataAccessLayer.Data;
 using DataAccessLayer.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BusinessLayer.Catalog
 {
     public class CatalogManager : ICatalogManager
     {
-        private BookRepository _bookRepository = new BookRepository();
+        private BookRepository _bookRepository;
 
-        public void DisplayCatalog()
+        public CatalogManager(DataContext context)
         {
-            List<Book> books = _bookRepository.GetAll().ToList();
+            _bookRepository = new BookRepository(context);
+        }
+
+        public async Task DisplayCatalog()
+        {
+            List<Book> books = await _bookRepository.GetAll();
             Console.WriteLine("Voici la liste des livres actuels :");
             foreach (Book book in books)
             {
@@ -22,16 +24,18 @@ namespace BusinessLayer.Catalog
             }
         }
 
-        public Book FindBook(int id)
+        public async Task<Book> FindBook(int id)
         {
-            Book book = _bookRepository.Get(id).First();
+            Book book = await _bookRepository.Get(id);
             Console.WriteLine($"Book with ID {book.Id} {book.Name}");
             return book;
         }
 
-        public List<Book> GetFantasyBooks()
+        public async Task<IEnumerable<Book>> GetFantasyBooks()
         {
-            List<Book> books = _bookRepository.GetAll().ToList().FindAll(book => book.Type == BookTypes.FANTASY);
+            List<Book> books = await _bookRepository.GetAll();
+            books.FindAll(book => book.Type == BookTypes.FANTASY);
+
             Console.WriteLine("Voici la liste des livres actuels de type fantasy");
             foreach (Book book in books)
             {

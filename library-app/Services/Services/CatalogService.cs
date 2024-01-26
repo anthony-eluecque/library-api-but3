@@ -1,30 +1,29 @@
 ﻿using BusinessLayer.Catalog;
 using BusinessObjects.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DataAccessLayer.Data;
 
 namespace Services.Services
 {
     public class CatalogService : ICatalogService
     {
-        private CatalogManager _catalogManager = new CatalogManager();
+        private CatalogManager _catalogManager;
 
-        public void ShowCatalog()
-        {
-            _catalogManager.DisplayCatalog();
+
+        public CatalogService(DataContext context) 
+        { 
+            _catalogManager = new CatalogManager(context);
         }
 
-        public Book FindBook(int id)
+        public async Task ShowCatalog()
         {
-            return _catalogManager.FindBook(id);
+            await _catalogManager.DisplayCatalog();
         }
 
-        public List<Book> GetFantasyBooks()
+        public async Task<Book> FindBook(int id)
         {
-            return _catalogManager.GetFantasyBooks();
+            return await _catalogManager.FindBook(id);
         }
+
+        public async Task<IEnumerable<Book>> GetFantasyBooks() => await _catalogManager.GetFantasyBooks();
     }
 }

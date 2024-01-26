@@ -1,19 +1,13 @@
 ﻿using BusinessObjects.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Catalog
 {
     public interface ICatalogManager
     {
-        public void DisplayCatalog();
+        public Task DisplayCatalog();
 
+        public Task<Book> FindBook(int id);
 
-        public Book FindBook(int id);
-
-        public List<Book> GetFantasyBooks();
+        public Task<IEnumerable<Book>> GetFantasyBooks();
     }
 }

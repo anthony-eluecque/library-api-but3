@@ -1,20 +1,17 @@
 ﻿using BusinessObjects.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DataAccessLayer.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repository
 {
     public class LibraryRepository : IRepository<Library>
     {
-        public IEnumerable<Library> Get(int id)
+        public Task<Library> Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Library> GetAll()
+        public Task<List<Library>> GetAll()
         {
             throw new NotImplementedException();
         }
