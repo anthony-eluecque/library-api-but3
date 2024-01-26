@@ -18,15 +18,13 @@ public class Program
         catalogService.FindBook(3);
         catalogService.GetFantasyBooks();
         catalogService.GetBetterGradeBook();
+
         host.Run();
     }
 
     private static IHostBuilder CreateHostBuilder(IConfigurationBuilder configuration)
     {
         var connectionString = configuration.Build().GetConnectionString("DefaultConnection");
-
-        Console.WriteLine("Connection String");
-        Console.WriteLine(connectionString);
 
         return Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
