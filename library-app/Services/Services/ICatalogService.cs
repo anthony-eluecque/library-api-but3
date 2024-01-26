@@ -14,5 +14,7 @@ namespace Services.Services
         public Book FindBook(int id);
 
         public List<Book> GetFantasyBooks();
+
+        public Book GetBetterGradeBook();
     }
 }

@@ -15,6 +15,7 @@ public class Program
         catalogService.ShowCatalog();
         catalogService.FindBook(1);
         catalogService.GetFantasyBooks();
+        catalogService.GetBetterGradeBook();
         host.Run();
     }
 

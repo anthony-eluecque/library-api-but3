@@ -26,5 +26,10 @@ namespace Services.Services
         {
             return _catalogManager.GetFantasyBooks();
         }
+
+        public Book GetBetterGradeBook()
+        {
+            return _catalogManager.GetBetterGradeBook();
+        }
     }
 }

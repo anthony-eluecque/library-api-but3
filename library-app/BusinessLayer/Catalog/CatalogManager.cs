@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace BusinessLayer.Catalog
 {
@@ -31,13 +32,30 @@ namespace BusinessLayer.Catalog
 
         public List<Book> GetFantasyBooks()
         {
-            List<Book> books = _bookRepository.GetAll().ToList().FindAll(book => book.Type == BookTypes.FANTASY);
+            List<Book> books = _bookRepository.GetAll().ToList();
+
+            IEnumerable<Book> booksQuery =
+                from book in books
+                where book.Type == BookTypes.FANTASY
+                select book;
+
             Console.WriteLine("Voici la liste des livres actuels de type fantasy");
-            foreach (Book book in books)
+            foreach (Book book in booksQuery)
             {
                 Console.WriteLine(book.Name);
             }
             return books;
+        }
+
+        public Book GetBetterGradeBook()
+        {
+            List<Book> books = _bookRepository.GetAll().ToList();
+
+            Book book = books.OrderByDescending(book => book.Rate).First();
+
+            Console.WriteLine($"Le livre avec la meilleure note est {book.Name} avec une note de {book.Rate}");
+
+            return book;
         }
     }
 }
