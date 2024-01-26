@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repository
 {
-    internal class AuthorRepository : IRepository<Author>
+    public class AuthorRepository : IRepository<Author>
     {
         public IEnumerable<Author> Get(int id)
         {

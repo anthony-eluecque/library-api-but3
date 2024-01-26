@@ -1,6 +1,8 @@
 ﻿using System.Net;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services.Services;
 
 public class Program
 {
@@ -10,6 +12,7 @@ public class Program
 
         var host = CreateHostBuilder(configuration).Build();
         host.Run();
+
     }
 
     private static IHostBuilder CreateHostBuilder(IConfigurationBuilder configuration)
@@ -17,7 +20,7 @@ public class Program
         return Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-
+                services.AddSingleton<ICatalogService, CatalogService>();
             });
     }
 }

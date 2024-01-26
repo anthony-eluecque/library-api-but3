@@ -11,7 +11,8 @@ namespace BusinessObjects.Entity
         AVENTURE,
         ENSEIGNEMENT,
         HISTOIRE,
-        JURIDIQUE
+        JURIDIQUE,
+        FANTASY
     }
        
     public class Book : Entity

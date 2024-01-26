@@ -8,18 +8,19 @@ namespace DataAccessLayer.Repository
 {
     public class BookRepository : IRepository<Book>
     {
-
-        public IEnumerable<Book> Get(int id)
-        {
-            yield return _books.FirstOrDefault(book => book.Id == id);
-        }
+        private List<Book> _books = new List<Book>();
 
         public IEnumerable<Book> GetAll()
         {
             return _books;
         }
 
+        public IEnumerable<Book> Get(int id)
+        {
+            return _books.Where(book => book.Id == id);
+        }
 
-        private List<Book> _books = new List<Book>();
+
+
     }
 }

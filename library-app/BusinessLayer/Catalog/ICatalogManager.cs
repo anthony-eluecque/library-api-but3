@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessObjects.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace BusinessLayer.Catalog
         public void DisplayCatalog();
 
 
-        public void FindBook(int id);
+        public Book FindBook(int id);
+
+        public List<Book> GetFantasyBooks();
     }
 }

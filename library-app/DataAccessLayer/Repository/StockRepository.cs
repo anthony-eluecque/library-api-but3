@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repository
 {
-    internal class StockRepository : IRepository<Stock>
+    public class StockRepository : IRepository<Stock>
     {
         public IEnumerable<Stock> Get(int id)
         {

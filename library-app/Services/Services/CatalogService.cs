@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Catalog;
+using BusinessObjects.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,16 @@ namespace Services.Services
 {
     public class CatalogService : ICatalogService
     {
-        public void FindBook(int id)
-        {
-            throw new NotImplementedException();
-        }
+        private CatalogManager _catalogManager = new CatalogManager();
 
         public void ShowCatalog()
         {
-            throw new NotImplementedException();
+            _catalogManager.DisplayCatalog();
+        }
+
+        public Book FindBook(int id)
+        {
+            return _catalogManager.FindBook(id);
         }
     }
 }

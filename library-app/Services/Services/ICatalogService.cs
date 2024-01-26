@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessObjects.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,6 @@ namespace Services.Services
     {
         public void ShowCatalog();
 
-        public void FindBook(int id);
+        public Book FindBook(int id);
     }
 }
