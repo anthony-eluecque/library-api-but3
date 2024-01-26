@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Catalog;
+using BusinessLayer.Catalog;
 using BusinessObjects.Entity;
 using DataAccessLayer.Data;
 
@@ -23,7 +23,12 @@ namespace Services.Services
         {
             return await _catalogManager.FindBook(id);
         }
-
+        
         public async Task<IEnumerable<Book>> GetFantasyBooks() => await _catalogManager.GetFantasyBooks();
+
+        public async Task<Book> GetBetterGradeBook() => await _catalogManager.GetBetterGradeBook();
+        
+    
+    
     }
 }

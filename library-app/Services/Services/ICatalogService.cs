@@ -1,4 +1,4 @@
-﻿using BusinessObjects.Entity;
+using BusinessObjects.Entity;
 
 namespace Services.Services
 {
@@ -9,5 +9,7 @@ namespace Services.Services
         public Task<Book> FindBook(int id);
 
         public Task<IEnumerable<Book>> GetFantasyBooks();
+
+        public Task<Book> GetBetterGradeBook();
     }
 }

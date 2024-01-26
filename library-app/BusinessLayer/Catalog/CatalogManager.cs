@@ -1,4 +1,4 @@
-﻿using BusinessObjects.Entity;
+using BusinessObjects.Entity;
 using DataAccessLayer.Data;
 using DataAccessLayer.Repository;
 
@@ -33,14 +33,30 @@ namespace BusinessLayer.Catalog
 
         public async Task<IEnumerable<Book>> GetFantasyBooks()
         {
-            List<Book> books = (await _bookRepository.GetAll()).FindAll(book => book.Type == BookTypes.FANTASY);
+            List<Book> books = await _bookRepository.GetAll();
+
+            IEnumerable<Book> booksQuery =
+                from book in books
+                where book.Type == BookTypes.FANTASY
+                select book;
 
             Console.WriteLine("Voici la liste des livres actuels de type fantasy");
-            foreach (Book book in books)
+            foreach (Book book in booksQuery)
             {
                 Console.WriteLine(book.Name);
             }
             return books;
+        }
+
+        public async Task<Book> GetBetterGradeBook()
+        {
+            List<Book> books = await _bookRepository.GetAll();
+
+            Book book = books.OrderByDescending(book => book.Rate).First();
+
+            Console.WriteLine($"Le livre avec la meilleure note est {book.Name} avec une note de {book.Rate}");
+
+            return book;
         }
     }
 }

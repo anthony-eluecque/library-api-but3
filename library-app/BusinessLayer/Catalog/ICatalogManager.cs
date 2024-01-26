@@ -1,4 +1,4 @@
-﻿using BusinessObjects.Entity;
+using BusinessObjects.Entity;
 
 namespace BusinessLayer.Catalog
 {
@@ -9,5 +9,7 @@ namespace BusinessLayer.Catalog
         public Task<Book> FindBook(int id);
 
         public Task<IEnumerable<Book>> GetFantasyBooks();
+        
+        public Task<Book> GetBetterGradeBook();
     }
 }
