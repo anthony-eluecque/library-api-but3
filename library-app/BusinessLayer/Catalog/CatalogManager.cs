@@ -33,8 +33,7 @@ namespace BusinessLayer.Catalog
 
         public async Task<IEnumerable<Book>> GetFantasyBooks()
         {
-            List<Book> books = await _bookRepository.GetAll();
-            books.FindAll(book => book.Type == BookTypes.FANTASY);
+            List<Book> books = (await _bookRepository.GetAll()).FindAll(book => book.Type == BookTypes.FANTASY);
 
             Console.WriteLine("Voici la liste des livres actuels de type fantasy");
             foreach (Book book in books)
