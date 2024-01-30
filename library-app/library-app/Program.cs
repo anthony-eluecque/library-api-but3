@@ -1,4 +1,7 @@
-﻿using DataAccessLayer.Data;
+﻿using BusinessLayer.Catalog;
+using BusinessObjects.Entity;
+using DataAccessLayer.Data;
+using DataAccessLayer.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +32,9 @@ public class Program
         return Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-                services.AddSingleton<ICatalogService, CatalogService>();
+                services.AddScoped<ICatalogService, CatalogService>();
+                services.AddScoped<ICatalogManager, CatalogManager>();
+                services.AddScoped<IRepository<Book>, BookRepository>();
                 services.AddDbContext<DataContext>(options =>
                 {
                     options.UseSqlite(connectionString);

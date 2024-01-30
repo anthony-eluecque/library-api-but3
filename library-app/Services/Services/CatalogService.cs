@@ -6,13 +6,13 @@ namespace Services.Services
 {
     public class CatalogService : ICatalogService
     {
-        private CatalogManager _catalogManager;
+        private ICatalogManager _catalogManager;
 
 
-        public CatalogService(DataContext context) 
+        public CatalogService(ICatalogManager catalogManager) 
         { 
-            _catalogManager = new CatalogManager(context);
-        }
+            _catalogManager = catalogManager;
+        }   
 
         public async Task ShowCatalog()
         {

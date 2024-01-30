@@ -7,11 +7,11 @@ namespace BusinessLayer.Catalog
 {
     public class CatalogManager : ICatalogManager
     {
-        private BookRepository _bookRepository;
+        private IRepository<Book> _bookRepository;
 
-        public CatalogManager(DataContext context)
+        public CatalogManager(IRepository<Book> repository)
         {
-            _bookRepository = new BookRepository(context);
+            _bookRepository = repository;
         }
 
         public async Task DisplayCatalog()
