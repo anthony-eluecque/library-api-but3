@@ -42,5 +42,40 @@ namespace Services.Test
             // Assert
             Mock.Get(catalogManagerMock).Verify(cm => cm.FindBook(It.IsAny<int>()), Times.Once);
         }
+
+        [TestMethod]
+        public async Task GetFantasyBooks_Should_Call_GetFantasyBooks()
+        {
+            var catalogManagerMock = Mock.Of<ICatalogManager>();
+            var catalogService = new CatalogService(catalogManagerMock);
+
+            // Set up the behavior for GetFantasyBooks method
+            Moq.Language.Flow.IReturnsResult<ICatalogManager> returnsResult = Mock.Get(catalogManagerMock)
+                .Setup(cm => cm.GetFantasyBooks())
+                .Returns(Task.FromResult<IEnumerable<Book>>(new List<Book>()));
+
+            // Act
+            await catalogService.GetFantasyBooks();
+
+            // Assert
+            Mock.Get(catalogManagerMock).Verify(cm => cm.GetFantasyBooks(), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task GetBetterGradeBook_Should_Call_GetBetterGradeBook()
+        {
+            var catalogManagerMock = Mock.Of<ICatalogManager>();
+            var catalogService = new CatalogService(catalogManagerMock);
+
+            // Set up the behavior for GetBetterGradeBook method
+            Mock.Get(catalogManagerMock).Setup(cm => cm.GetBetterGradeBook())
+                .Returns(Task.FromResult(new Book()));
+
+            // Act
+            await catalogService.GetBetterGradeBook();
+
+            // Assert
+            Mock.Get(catalogManagerMock).Verify(cm => cm.GetBetterGradeBook(), Times.Once);
+        }
     }
 }
