@@ -77,5 +77,90 @@ namespace Services.Test
             // Assert
             Mock.Get(catalogManagerMock).Verify(cm => cm.GetBetterGradeBook(), Times.Once);
         }
+
+        [TestMethod]
+        public async Task GetBooks_Should_Call_GetBooks()
+        {
+            var catalogManagerMock = Mock.Of<ICatalogManager>();
+            var catalogService = new CatalogService(catalogManagerMock);
+
+            // Set up the behavior for GetBooks method
+            Mock.Get(catalogManagerMock).Setup(cm => cm.GetBooks())
+                .Returns(Task.FromResult<IEnumerable<Book>>(new List<Book>()));
+
+            // Act
+            await catalogService.GetBooks();
+
+            // Assert
+            Mock.Get(catalogManagerMock).Verify(cm => cm.GetBooks(), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task GetBooksByType_Should_Call_GetBooksByType()
+        {
+            var catalogManagerMock = Mock.Of<ICatalogManager>();
+            var catalogService = new CatalogService(catalogManagerMock);
+
+            // Set up the behavior for GetBooksByType method
+            Mock.Get(catalogManagerMock).Setup(cm => cm.GetBooksByType(It.IsAny<string>()))
+                .Returns(Task.FromResult<IEnumerable<Book>>(new List<Book>()));
+
+            // Act
+            await catalogService.GetBooksByType("Fantasy");
+
+            // Assert
+            Mock.Get(catalogManagerMock).Verify(cm => cm.GetBooksByType(It.IsAny<string>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task UpdateBook_Should_Call_UpdateBook()
+        {
+            var catalogManagerMock = Mock.Of<ICatalogManager>();
+            var catalogService = new CatalogService(catalogManagerMock);
+
+            // Set up the behavior for UpdateBook method
+            Mock.Get(catalogManagerMock).Setup(cm => cm.UpdateBook(It.IsAny<Book>()))
+                .Returns(Task.FromResult(true));
+
+            // Act
+            await catalogService.UpdateBook(new Book());
+
+            // Assert
+            Mock.Get(catalogManagerMock).Verify(cm => cm.UpdateBook(It.IsAny<Book>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task DeleteBook_Should_Call_DeleteBook()
+        {
+            var catalogManagerMock = Mock.Of<ICatalogManager>();
+            var catalogService = new CatalogService(catalogManagerMock);
+
+            // Set up the behavior for DeleteBook method
+            Mock.Get(catalogManagerMock).Setup(cm => cm.DeleteBook(It.IsAny<int>()))
+                .Returns(Task.FromResult(true));
+
+            // Act
+            await catalogService.DeleteBook(1);
+
+            // Assert
+            Mock.Get(catalogManagerMock).Verify(cm => cm.DeleteBook(It.IsAny<int>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task AddBook_Should_Call_AddBook()
+        {
+            var catalogManagerMock = Mock.Of<ICatalogManager>();
+            var catalogService = new CatalogService(catalogManagerMock);
+
+            // Set up the behavior for AddBook method
+            Mock.Get(catalogManagerMock).Setup(cm => cm.AddBook(It.IsAny<Book>()))
+                .Returns(Task.FromResult(true));
+
+            // Act
+            await catalogService.AddBook(new Book());
+
+            // Assert
+            Mock.Get(catalogManagerMock).Verify(cm => cm.AddBook(It.IsAny<Book>()), Times.Once);
+        }
     }
 }
