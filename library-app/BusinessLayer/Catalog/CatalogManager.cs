@@ -14,6 +14,12 @@ namespace BusinessLayer.Catalog
             _bookRepository = repository;
         }
 
+        public async Task<IEnumerable<Book>> GetBooks()
+        {
+            List<Book> books = await _bookRepository.GetAll();
+            return books;
+        }
+
         public async Task DisplayCatalog()
         {
             List<Book> books = await _bookRepository.GetAll();
@@ -27,7 +33,6 @@ namespace BusinessLayer.Catalog
         public async Task<Book> FindBook(int id)
         {
             Book book = await _bookRepository.Get(id);
-            Console.WriteLine($"Book with ID {book.Id} {book.Name}");
             return book;
         }
 
@@ -57,6 +62,45 @@ namespace BusinessLayer.Catalog
             Console.WriteLine($"Le livre avec la meilleure note est {book.Name} avec une note de {book.Rate}");
 
             return book;
+        }
+
+        public async Task<IEnumerable<Book>> GetBooksByType(string type)
+        {
+            List<Book> books = await _bookRepository.GetAll();
+            return books.FindAll(b => b.Type.ToString().Equals(type, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public async Task<bool> UpdateBook(Book book)
+        {
+            Book _book = await _bookRepository.Get(book.Id);
+           
+            if (book != null)
+            {
+                await _bookRepository.Update(_book);
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> DeleteBook(int id)
+        {
+            Book book = await _bookRepository.Get(id);
+            if (book != null)
+            {
+                await _bookRepository.Delete(book);
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> AddBook(Book book)
+        {
+            if (book != null)
+            {
+                await _bookRepository.Add(book);
+                return true;
+            }
+            return false;
         }
     }
 }
