@@ -14,6 +14,12 @@ namespace BusinessLayer.Catalog
             _bookRepository = repository;
         }
 
+        public async Task<IEnumerable<Book>> GetBooks()
+        {
+            List<Book> books = await _bookRepository.GetAll();
+            return books;
+        }
+
         public async Task DisplayCatalog()
         {
             List<Book> books = await _bookRepository.GetAll();
@@ -58,5 +64,11 @@ namespace BusinessLayer.Catalog
 
             return book;
         }
+
+        public async Task<IEnumerable<Book>> GetBooksByType(string type)
+        {
+            List<Book> books = await _bookRepository.GetAll();
+            return books.FindAll(b => b.Type.ToString().Equals(type, StringComparison.OrdinalIgnoreCase));
+        }   
     }
 }
