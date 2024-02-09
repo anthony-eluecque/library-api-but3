@@ -10,6 +10,7 @@ namespace DataAccessLayer.Data
         public DbSet<Book> Book => Set<Book>();
         public DbSet<Author> Author => Set<Author>();
         public DbSet<Library> Library => Set<Library>();
+        public DbSet<Stock> Stock => Set<Stock>();
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) 
         {
