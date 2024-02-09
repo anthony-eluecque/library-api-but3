@@ -328,9 +328,9 @@ Donc pour accéder à cette API, nous utiliserons `GET localhost:53000/WeatherFo
 Après l'explication, place à la pratique.
 
 Créez un fichier `BookController` qui va commprendre les méthodes *GET* suivants :
-- books
+- book
 - book/{id}
-- books/{type}
+- book/{type}
 - book/topRatedBook
 
 Pour tester votre API, installez [Postman](https://www.postman.com/).
