@@ -92,5 +92,15 @@ namespace BusinessLayer.Catalog
             }
             return false;
         }
+
+        public async Task<bool> AddBook(Book book)
+        {
+            if (book != null)
+            {
+                await _bookRepository.Add(book);
+                return true;
+            }
+            return false;
+        }
     }
 }

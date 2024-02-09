@@ -62,5 +62,17 @@ namespace DataAccessLayer.Repository
                 throw;
             }
         }
+
+        public async Task Add(T entity)
+        {
+            try
+            {
+                await _context.Set<T>().AddAsync(entity);
+                await _context.SaveChangesAsync();
+            } catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

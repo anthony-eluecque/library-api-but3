@@ -71,5 +71,13 @@ namespace LibraryManager.Hosting.Controllers
             return BadRequest("Invalid book");
         }
 
+        [HttpPost("")]
+        public async Task<ActionResult> CreateBook([FromBody] Book book)
+        {
+            bool hasBeenCreated = await _catalogService.AddBook(book);
+            if (hasBeenCreated) return Ok();
+            return BadRequest("Invalid book");
+        }
+
     }
 }

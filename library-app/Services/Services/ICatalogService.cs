@@ -19,5 +19,7 @@ namespace Services.Services
         public Task<bool> UpdateBook(Book book);
 
         public Task<bool> DeleteBook(int id);
+
+        public Task<bool> AddBook(Book book);
     }
 }

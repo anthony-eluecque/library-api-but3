@@ -35,6 +35,8 @@ namespace Services.Services
         public async Task<bool> UpdateBook(Book book) => await _catalogManager.UpdateBook(book);
 
         public async Task<bool> DeleteBook(int id) => await _catalogManager.DeleteBook(id);
+
+        public async Task<bool> AddBook(Book book) => await _catalogManager.AddBook(book);
         
             
     }

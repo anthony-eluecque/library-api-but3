@@ -10,5 +10,6 @@
 
         public Task Delete(T entity);
 
+        public Task Add(T entity);
     }
 }
