@@ -16,7 +16,6 @@ namespace DataAccessLayer.Data
         
         }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -29,12 +28,13 @@ namespace DataAccessLayer.Data
 
 
             modelBuilder.Entity<Book>()
-                .HasMany(b => b.Libraries)
-                .WithMany(l => l.Books);
+                .HasMany(b => b.Stocks)
+                .WithOne(s => s.Book);
 
+            modelBuilder.Entity<Library>()
+                .HasMany(l => l.Stocks)
+                .WithOne(s => s.Library);
 
         }
-
-
     }
 }

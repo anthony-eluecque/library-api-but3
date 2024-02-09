@@ -6,7 +6,6 @@
 
         public string Adress { get; set; }
 
-
-        public ICollection<Book>? Books { get; set; }
+        public ICollection<Stock>? Stocks { get; set; }
     }
 }
