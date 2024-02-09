@@ -5,5 +5,7 @@
         public Task<List<T>> GetAll();
 
         public Task<T> Get(int id);
+
+        public Task Update(T entity);
     }
 }

@@ -68,6 +68,18 @@ namespace BusinessLayer.Catalog
         {
             List<Book> books = await _bookRepository.GetAll();
             return books.FindAll(b => b.Type.ToString().Equals(type, StringComparison.OrdinalIgnoreCase));
-        }   
+        }
+
+        public async Task<bool> UpdateBook(Book book)
+        {
+            Book _book = await _bookRepository.Get(book.Id);
+           
+            if (book != null)
+            {
+                await _bookRepository.Update(_book);
+                return true;
+            }
+            return false;
+        }
     }
 }

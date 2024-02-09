@@ -53,5 +53,16 @@ namespace LibraryManager.Hosting.Controllers
         {
             return Ok(await _catalogService.GetBetterGradeBook());
         }
+
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateBook([FromBody] Book book)
+        {
+
+            bool hasBeenUpdated = await _catalogService.UpdateBook(book);
+            if (hasBeenUpdated) return Ok();
+            return BadRequest("Invalid book");
+        }
+
     }
 }

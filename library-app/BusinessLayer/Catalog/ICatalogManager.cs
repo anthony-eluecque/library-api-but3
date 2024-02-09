@@ -15,5 +15,7 @@ namespace BusinessLayer.Catalog
         public Task<IEnumerable<Book>> GetBooksByType(string type);
 
         public Task<Book> GetBetterGradeBook();
+
+        public Task<bool> UpdateBook(Book book);
     }
 }
