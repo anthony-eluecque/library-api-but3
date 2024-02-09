@@ -17,5 +17,7 @@ namespace BusinessLayer.Catalog
         public Task<Book> GetBetterGradeBook();
 
         public Task<bool> UpdateBook(Book book);
+
+        public Task<bool> DeleteBook(int id);
     }
 }

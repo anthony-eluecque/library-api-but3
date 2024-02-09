@@ -50,5 +50,17 @@ namespace DataAccessLayer.Repository
                 throw;
             }
         }
+
+        public async Task Delete(T entity)
+        {
+            try
+            {
+                _context.Set<T>().Remove(entity);
+                await _context.SaveChangesAsync();
+            } catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

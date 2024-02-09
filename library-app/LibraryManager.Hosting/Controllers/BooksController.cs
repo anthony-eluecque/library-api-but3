@@ -58,9 +58,16 @@ namespace LibraryManager.Hosting.Controllers
         [HttpPut]
         public async Task<ActionResult> UpdateBook([FromBody] Book book)
         {
-
             bool hasBeenUpdated = await _catalogService.UpdateBook(book);
             if (hasBeenUpdated) return Ok();
+            return BadRequest("Invalid book");
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteBook(int id)
+        {
+            bool hasBeenDeleted = await _catalogService.DeleteBook(id);
+            if (hasBeenDeleted) return Ok();
             return BadRequest("Invalid book");
         }
 

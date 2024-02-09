@@ -33,5 +33,9 @@ namespace Services.Services
         public async Task<IEnumerable<Book>> GetBooksByType(string type) => await _catalogManager.GetBooksByType(type);
 
         public async Task<bool> UpdateBook(Book book) => await _catalogManager.UpdateBook(book);
+
+        public async Task<bool> DeleteBook(int id) => await _catalogManager.DeleteBook(id);
+        
+            
     }
 }

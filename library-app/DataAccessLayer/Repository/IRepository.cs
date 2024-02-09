@@ -7,5 +7,8 @@
         public Task<T> Get(int id);
 
         public Task Update(T entity);
+
+        public Task Delete(T entity);
+
     }
 }

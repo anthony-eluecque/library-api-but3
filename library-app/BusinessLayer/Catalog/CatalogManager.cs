@@ -81,5 +81,16 @@ namespace BusinessLayer.Catalog
             }
             return false;
         }
+
+        public async Task<bool> DeleteBook(int id)
+        {
+            Book book = await _bookRepository.Get(id);
+            if (book != null)
+            {
+                await _bookRepository.Delete(book);
+                return true;
+            }
+            return false;
+        }
     }
 }
