@@ -18,16 +18,7 @@ public class Program
         builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-        // Add services to the container.
-
-        builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
-        builder.Services.AddScoped<ICatalogService, CatalogService>();
-        builder.Services.AddScoped<ICatalogManager, CatalogManager>();
-        builder.Services.AddScoped<IRepository<Book>, BookRepository>();
+        ConfigureServices(builder.Services);
 
         builder.Services.AddDbContext<DataContext>(options =>
         {
@@ -50,5 +41,18 @@ public class Program
         app.MapControllers();
 
         app.Run();
+    }
+
+
+    private static void ConfigureServices(IServiceCollection services)
+    {
+
+        services.AddControllers();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+
+        services.AddScoped<ICatalogService, CatalogService>();
+        services.AddScoped<ICatalogManager, CatalogManager>();
+        services.AddScoped<IRepository<Book>, BookRepository>();
     }
 }

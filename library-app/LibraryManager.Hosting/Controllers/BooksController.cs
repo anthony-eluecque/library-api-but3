@@ -10,10 +10,10 @@ namespace LibraryManager.Hosting.Controllers
     [Route("api/[controller]")]
     public class BooksController : Controller
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<BooksController> _logger;
         private readonly ICatalogService _catalogService;
 
-        public BooksController(ILogger<WeatherForecastController> logger, ICatalogService catalogService)
+        public BooksController(ILogger<BooksController> logger, ICatalogService catalogService)
         {
             _logger = logger;
             _catalogService = catalogService;
@@ -33,7 +33,7 @@ namespace LibraryManager.Hosting.Controllers
 
             if (book == null) return NotFound();
 
-            return Ok(await _catalogService.FindBook(id));
+            return Ok(book);
         }
 
         [HttpGet("{type}")]
