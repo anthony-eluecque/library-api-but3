@@ -18,11 +18,31 @@ namespace LibraryManager.Hosting.Controllers
             _catalogService = catalogService;
         }
 
+        [HttpGet("")]
+        public async Task<IEnumerable<Book>> Get()
+        {
+            return await _catalogService.GetBooks();
+        }
 
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<Book>> Get(int id)
+
+        [HttpGet("book/{id:int}")]
+        public async Task<ActionResult<Book>> GetById(int id)
         {
             return await _catalogService.FindBook(id);
         }
+
+        [HttpGet("{type}")]
+        public async Task<IEnumerable<Book>> GetByType(string type)
+        {
+            return await _catalogService.GetBooksByType(type);
+        }
+
+
+        [HttpGet("topRatedBook")]
+        public async Task<ActionResult<Book>> GetTopRatedBook()
+        {
+            return await _catalogService.GetBetterGradeBook();
+        }
+
     }
 }
