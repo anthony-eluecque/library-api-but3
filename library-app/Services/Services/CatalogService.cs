@@ -27,8 +27,9 @@ namespace Services.Services
         public async Task<IEnumerable<Book>> GetFantasyBooks() => await _catalogManager.GetFantasyBooks();
 
         public async Task<Book> GetBetterGradeBook() => await _catalogManager.GetBetterGradeBook();
-        
-    
-    
+
+        public async Task<IEnumerable<Book>> GetBooks() => await _catalogManager.GetBooks();
+
+        public async Task<IEnumerable<Book>> GetBooksByType(string type) => await _catalogManager.GetBooksByType(type);
     }
 }
