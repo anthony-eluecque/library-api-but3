@@ -33,7 +33,6 @@ namespace BusinessLayer.Catalog
         public async Task<Book> FindBook(int id)
         {
             Book book = await _bookRepository.Get(id);
-            Console.WriteLine($"Book with ID {book.Id} {book.Name}");
             return book;
         }
 
