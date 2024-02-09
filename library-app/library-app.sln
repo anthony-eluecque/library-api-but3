@@ -15,7 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Test", "Services.Test\Services.Test.csproj", "{2F9C335A-D65A-4B74-9792-85C63CCFD42B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManager.Hosting", "LibraryManager.Hosting\LibraryManager.Hosting.csproj", "{FE56D61E-6B97-4051-9425-8272AD92017A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryManager.Hosting", "LibraryManager.Hosting\LibraryManager.Hosting.csproj", "{FE56D61E-6B97-4051-9425-8272AD92017A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8AB63964-70A5-43DC-9DA6-53F64F4531F9} = {8AB63964-70A5-43DC-9DA6-53F64F4531F9}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
